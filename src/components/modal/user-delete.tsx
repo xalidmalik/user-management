@@ -10,8 +10,8 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React, { useEffect } from "react";
-import { useAppSelector } from "store/store";
-import { userOperationState } from "store/user-slice";
+import { useAppDispatch, useAppSelector } from "store/store";
+import { operation, userOperationState } from "store/user-slice";
 import { UserType } from "types/user";
 
 type UserDeleteModalProps = {
@@ -28,12 +28,23 @@ export const UserDeleteModal = ({
   handleClick,
 }: UserDeleteModalProps) => {
   const { type, isLoading, status } = useAppSelector(userOperationState);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (type === "delete" && !isLoading && status === "success") {
+      dispatch(
+        operation({
+          operation: {
+            type: "create",
+            status: "initial",
+            isLoading: false,
+            error: null,
+          },
+        })
+      );
       onClose();
     }
-  }, [isLoading, onClose, status, type]);
+  }, [dispatch, isLoading, onClose, status, type]);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>

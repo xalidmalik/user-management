@@ -147,20 +147,6 @@ export const createUserAction =
             status: "success",
             variant: "solid",
           });
-          setTimeout(
-            () =>
-              dispatch(
-                operation({
-                  operation: {
-                    type: "create",
-                    status: "initial",
-                    isLoading: false,
-                    error: null,
-                  },
-                })
-              ),
-            2000
-          );
         }
       })
       .catch((error) => {
@@ -224,20 +210,6 @@ export const deleteUserAction =
             status: "success",
             variant: "solid",
           });
-          setTimeout(
-            () =>
-              dispatch(
-                operation({
-                  operation: {
-                    type: "create",
-                    status: "initial",
-                    isLoading: false,
-                    error: null,
-                  },
-                })
-              ),
-            2000
-          );
         }
       })
       .catch((error) => {

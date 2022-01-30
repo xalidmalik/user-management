@@ -1,10 +1,12 @@
-import { Box, Center, Text } from "@chakra-ui/react";
+import { Box, Button, Heading, Text, VStack } from "@chakra-ui/react";
 import React from "react";
+import { Link } from "react-location";
 import { Column, useSortBy, useTable } from "react-table";
+import { UserType } from "types/user";
 
 type TableProps = {
   columns: Column[];
-  data: any;
+  data: UserType[];
   fetching?: boolean;
   showItem?: number;
   rowProps?: any;
@@ -24,7 +26,7 @@ export const Table = ({
       useSortBy
     );
 
-  if (data) {
+  if (data.length) {
     return (
       <Box
         minWidth="100%"
@@ -107,9 +109,29 @@ export const Table = ({
     );
   } else {
     return (
-      <Center>
-        <Text> It is Empty</Text>
-      </Center>
+      <Box
+        minWidth="100%"
+        borderRadius=".75rem"
+        border="1px solid #DFDFDF"
+        overflow="hidden"
+        bg="white"
+        p="32"
+      >
+        <VStack spacing="8">
+          <VStack>
+            <Heading>Start adding users</Heading>
+            <Text>
+              It looks like you haven't added any users, you can get started
+              right away
+            </Text>
+          </VStack>
+          <Link to="user/add">
+            <Button colorScheme="blue" variant="outline" size="lg">
+              Add New
+            </Button>
+          </Link>
+        </VStack>
+      </Box>
     );
   }
 };
