@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { AddUser } from "pages/add-user";
+import { Dashboard } from "pages/dashboard";
+import { EditUser } from "pages/edit-user";
+import React from "react";
+import { Outlet, ReactLocation, Route, Router } from "react-location";
+
+const routes: Route[] = [
+  {
+    path: "/",
+    element: <Dashboard />,
+  },
+  {
+    path: "user/add",
+    element: <AddUser />,
+  },
+  {
+    path: "user/edit/:userId",
+    element: <EditUser />,
+  },
+];
+
+export const location = new ReactLocation();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router routes={routes} location={location}>
+      <Outlet />
+    </Router>
   );
 }
 
