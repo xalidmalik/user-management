@@ -35,7 +35,6 @@ export const UserDeleteModal = ({
     }
   }, [isLoading, onClose, status, type]);
 
-  console.log("Modal Render");
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />

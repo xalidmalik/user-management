@@ -107,7 +107,6 @@ export const updateUserAction =
 export const createUserAction =
   ({ user, toast }: { user: Partial<UserType>; toast: any }) =>
   async (dispatch: AppDispatch) => {
-    console.log("hew", user);
     dispatch(
       operation({
         operation: {

@@ -25,8 +25,6 @@ export const Dashboard = memo(() => {
     }
   }, [dispatch, status]);
 
-  console.log("Dashboard Render");
-
   const UserColumnMemo = useMemo(() => UserColumn, []);
   return (
     <GeneralLayout>
